@@ -1,0 +1,296 @@
+<template>
+  <style>
+    @font-face {
+      font-family: "Be Vietnam Pro";
+      src: url("assets/fonts/BeVietnamPro-Bold.ttf") format("truetype");
+      font-weight: 700;
+      font-style: normal;
+    }
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background: #10141a;
+      color: #f4f1ea;
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-weight: 700;
+    }
+    #glow {
+      position: absolute;
+      left: 140px;
+      top: 240px;
+      z-index: 1;
+      width: 800px;
+      height: 520px;
+      background: radial-gradient(ellipse at center, rgba(125, 206, 196, 0.16), rgba(16, 20, 26, 0) 70%);
+    }
+    #board {
+      position: absolute;
+      left: 48px;
+      top: 190px;
+      z-index: 3;
+      width: 984px;
+      height: 860px;
+      border-radius: 24px;
+      background: #f4f1ea;
+      box-shadow: 0 22px 0 #d5cbbd;
+    }
+    .head {
+      position: absolute;
+      top: 28px;
+      z-index: 4;
+      width: 280px;
+      margin: 0;
+      color: #1a1410;
+      font-size: 34px;
+      line-height: 1.15;
+      text-align: center;
+      opacity: 0;
+    }
+    #h1 { left: 36px; }
+    #h2 { left: 352px; }
+    #h3 { left: 668px; }
+    .small { display: block; font-size: 28px; color: #6d645c; }
+    .lab {
+      position: absolute;
+      left: 36px;
+      z-index: 4;
+      width: 912px;
+      margin: 0;
+      color: #1a1410;
+      font-size: 32px;
+      opacity: 0;
+    }
+    #lab1 { top: 168px; }
+    #lab2 { top: 390px; }
+    #lab3 { top: 612px; }
+    .cell {
+      position: absolute;
+      z-index: 4;
+      width: 280px;
+      height: 118px;
+      border-radius: 16px;
+      background: #1c2430;
+      opacity: 0;
+    }
+    .cell p { margin: 22px 0 0; text-align: center; font-size: 44px; color: #f4f1ea; }
+    .cell.win p { margin-top: 12px; font-size: 64px; color: #e7c56a; }
+    #c11 { left: 36px; top: 220px; }
+    #c12 { left: 352px; top: 220px; }
+    #c13 { left: 668px; top: 220px; }
+    #c21 { left: 36px; top: 442px; }
+    #c22 { left: 352px; top: 442px; }
+    #c23 { left: 668px; top: 442px; }
+    #c31 { left: 36px; top: 664px; }
+    #c32 { left: 352px; top: 664px; }
+    #c33 { left: 668px; top: 664px; }
+    #src {
+      position: absolute;
+      left: 36px;
+      top: 800px;
+      z-index: 4;
+      margin: 0;
+      color: #3a342e;
+      font-size: 28px;
+      opacity: 0;
+    }
+    #phone {
+      position: absolute;
+      left: 390px;
+      top: 250px;
+      z-index: 6;
+      width: 250px;
+      height: 420px;
+      border-radius: 28px;
+      background: #1c2430;
+      opacity: 0;
+    }
+    #screen {
+      position: absolute;
+      left: 18px;
+      top: 48px;
+      width: 214px;
+      height: 320px;
+      border-radius: 12px;
+      background: #10141a;
+    }
+    #phone p {
+      position: absolute;
+      left: 0;
+      top: 130px;
+      width: 250px;
+      margin: 0;
+      text-align: center;
+      color: #e7c56a;
+      font-size: 32px;
+    }
+    #fable {
+      position: absolute;
+      left: 36px;
+      top: 800px;
+      z-index: 5;
+      margin: 0;
+      color: #1a1410;
+      font-size: 30px;
+      opacity: 0;
+    }
+    #hop {
+      position: absolute;
+      left: 88px;
+      top: 455px;
+      z-index: 7;
+      width: 28px;
+      height: 28px;
+      background: #7dcec4;
+      clip-path: polygon(0 0, 100% 50%, 0 100%);
+      opacity: 0;
+    }
+    .cap {
+      position: absolute;
+      left: 64px;
+      top: 1088px;
+      z-index: 9;
+      width: 952px;
+      margin: 0;
+      font-size: 45px;
+      line-height: 1.22;
+      opacity: 0;
+    }
+    #k1 { opacity: 1; }
+    .w { color: #9a9388; }
+    .w.hot { color: #7dcec4; }
+  </style>
+  <div id="root" data-composition-id="card" data-width="1080" data-height="1920" data-layout-allow-overlap>
+    <div id="glow"></div>
+    <div id="board">
+      <p class="head" id="h1"><span class="small">Gemini 4</span>Argon</p>
+      <p class="head" id="h2"><span class="small">GPT-6</span>Astra</p>
+      <p class="head" id="h3"><span class="small">Claude</span>Opus 5.5</p>
+      <p class="lab" id="lab1">Vals Index</p>
+      <div class="cell win" id="c11"><p>68,9</p></div>
+      <div class="cell" id="c12"><p>63,1</p></div>
+      <div class="cell" id="c13"><p>67,0</p></div>
+      <p class="lab" id="lab2">FrontierSWE</p>
+      <div class="cell" id="c21"><p>55,0</p></div>
+      <div class="cell win" id="c22"><p>65,5</p></div>
+      <div class="cell" id="c23"><p>62,3</p></div>
+      <p class="lab" id="lab3">Terminal-bench 4.0</p>
+      <div class="cell" id="c31"><p>57,4</p></div>
+      <div class="cell" id="c32"><p>58,2</p></div>
+      <div class="cell win" id="c33"><p>66,4</p></div>
+      <p id="src">thẻ Google · 13/10/2026</p>
+      <p id="fable">Thẻ còn cột Claude Fable 5.1</p>
+    </div>
+    <div id="phone"><div id="screen"></div><p>ChatGPT</p></div>
+    <div id="hop"></div>
+    <p id="k1" class="cap"><span class="w hot">Ba</span> <span class="w">model</span> <span class="w">trên</span> <span class="w">một</span> <span class="w">thẻ</span> <span class="w">cũng</span> <span class="w">chia</span> <span class="w" data-role="go">hàng</span> <span class="w">như</span> <span class="w">vậy.</span></p>
+    <p id="k2" class="cap"><span class="w hot">Gemini</span> <span class="w">4</span> <span class="w" data-role="num">Argon</span> <span class="w">bên</span> <span class="w">trái.</span> <span class="w">GPT-6</span> <span class="w">Astra</span> <span class="w">ở</span> <span class="w">giữa.</span><br><span class="w">Claude</span> <span class="w">Opus</span> <span class="w">5.5</span> <span class="w">bên</span> <span class="w">phải.</span></p>
+    <p id="k3" class="cap"><span class="w hot">Astra</span> <span class="w">là</span> <span class="w">tên</span> <span class="w">model</span> <span class="w">trên</span> <span class="w">thẻ.</span><br><span class="w" data-role="num">ChatGPT</span> <span class="w">là</span> <span class="w">ứng</span> <span class="w">dụng</span> <span class="w">người</span> <span class="w">ta</span> <span class="w">mở.</span></p>
+    <p id="k4" class="cap"><span class="w hot">Hàng</span> <span class="w" data-role="num">Vals</span> <span class="w">Index.</span> <span class="w">Google</span> <span class="w">xếp</span> <span class="w">vào</span><br><span class="w">tài</span> <span class="w">chính,</span> <span class="w">code,</span> <span class="w">luật,</span> <span class="w">thuế.</span></p>
+    <p id="k5" class="cap"><span class="w hot">Argon</span> <span class="w">đứng</span> <span class="w" data-role="num">68,9.</span></p>
+    <p id="k6" class="cap"><span class="w hot">Opus</span> <span class="w">67,0.</span> <span class="w">Astra</span> <span class="w">63,1.</span><br><span class="w" data-role="num">Argon</span> <span class="w">cao</span> <span class="w">hơn</span> <span class="w">trên</span> <span class="w">hàng</span> <span class="w">này.</span></p>
+    <p id="k7" class="cap"><span class="w hot">Hàng</span> <span class="w" data-role="num">FrontierSWE.</span><br><span class="w">Trên</span> <span class="w">thẻ,</span> <span class="w">hàng</span> <span class="w">này</span> <span class="w">thuộc</span> <span class="w">mục</span> <span class="w">code.</span></p>
+    <p id="k8" class="cap"><span class="w hot">Astra</span> <span class="w">đứng</span> <span class="w" data-role="num">65,5.</span></p>
+    <p id="k9" class="cap"><span class="w hot">Opus</span> <span class="w">62,3.</span> <span class="w">Argon</span> <span class="w">55,0.</span><br><span class="w" data-role="num">Astra</span> <span class="w">cao</span> <span class="w">hơn</span> <span class="w">trên</span> <span class="w">hàng</span> <span class="w">này.</span></p>
+    <p id="k10" class="cap"><span class="w hot">Hàng</span> <span class="w" data-role="num">Terminal-bench</span> <span class="w">4.0.</span><br><span class="w">Cùng</span> <span class="w">mục</span> <span class="w">code</span> <span class="w">trên</span> <span class="w">thẻ.</span></p>
+    <p id="k11" class="cap"><span class="w hot">Opus</span> <span class="w">đứng</span> <span class="w" data-role="num">66,4.</span></p>
+    <p id="k12" class="cap"><span class="w hot">Astra</span> <span class="w">58,2.</span> <span class="w">Argon</span> <span class="w">57,4.</span><br><span class="w" data-role="num">Opus</span> <span class="w">cao</span> <span class="w">hơn</span> <span class="w">trên</span> <span class="w">hàng</span> <span class="w">này.</span></p>
+    <p id="k13" class="cap"><span class="w hot">Ba</span> <span class="w">hàng</span> <span class="w">này</span> <span class="w">nằm</span> <span class="w">trên</span> <span class="w">thẻ</span> <span class="w">Google,</span><br><span class="w">ngày</span> <span class="w" data-role="num">13/10/2026.</span></p>
+    <p id="k14" class="cap"><span class="w hot">Số</span> <span class="w">này</span> <span class="w">Google</span> <span class="w">ghi</span> <span class="w">trên</span> <span class="w" data-role="go">thẻ.</span><br><span class="w">Không</span> <span class="w">phải</span> <span class="w">lần</span> <span class="w">hỏi</span> <span class="w">ba</span> <span class="w">model</span> <span class="w">tại</span> <span class="w">đây.</span></p>
+    <p id="k15" class="cap"><span class="w hot">Thẻ</span> <span class="w">còn</span> <span class="w">cột</span> <span class="w">Claude</span> <span class="w" data-role="num">Fable</span> <span class="w">5.1.</span><br><span class="w">Ba</span> <span class="w">hàng</span> <span class="w">này</span> <span class="w">cột</span> <span class="w">đó</span> <span class="w">không</span> <span class="w">cao</span> <span class="w">nhất.</span></p>
+    <p id="k16" class="cap"><span class="w hot">Lần</span> <span class="w">sau</span> <span class="w">nghe</span> <span class="w">"thông</span> <span class="w">minh</span> <span class="w">hơn",</span><br><span class="w">hỏi</span> <span class="w">tên</span> <span class="w" data-role="num">hàng</span> <span class="w">và</span> <span class="w">ai</span> <span class="w">công</span> <span class="w">bố</span> <span class="w">thẻ.</span></p>
+  </div>
+  <script>
+    (() => {
+      const tl = gsap.timeline({ paused: true });
+      const DIM = "#9a9388";
+      const CREAM = "#f4f1ea";
+      const GO = "#7dcec4";
+      const NUM = "#e7c56a";
+      const tone = (el) => {
+        const role = el.getAttribute("data-role");
+        if (role === "num" || role === "gold") return NUM;
+        if (role === "go") return GO;
+        return null;
+      };
+      const karaoke = (sel, start, dur) => {
+        const words = Array.from(document.querySelectorAll(sel + " .w"));
+        const n = words.length;
+        if (!n) return;
+        const each = Math.min(0.42, Math.max(0.16, (dur - 0.35) / n));
+        words.forEach((el, i) => {
+          const stay = tone(el);
+          const hot = stay || GO;
+          const rest = stay || CREAM;
+          const t = start + 0.06 + i * each;
+          if (i === 0) {
+            tl.fromTo(el, { color: hot }, { color: rest, duration: 0.14, immediateRender: false }, t + each * 0.7);
+          } else {
+            tl.fromTo(el, { color: DIM }, { color: hot, duration: 0.08, immediateRender: false }, t);
+            tl.fromTo(el, { color: hot }, { color: rest, duration: 0.12, immediateRender: false }, t + each * 0.55);
+          }
+        });
+      };
+      const cap = (id, start, dur, last) => {
+        if (start > 0) {
+          tl.set(id, { opacity: 0 }, 0);
+          tl.to(id, { opacity: 1, duration: 0.16 }, start);
+        }
+        karaoke(id, start, Math.max(0.8, dur - 0.28));
+        if (!last) tl.to(id, { opacity: 0, duration: 0.14 }, start + dur - 0.14);
+      };
+      const pop = (id, t) => {
+        tl.fromTo(id, { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.2, ease: "power2.out" }, t);
+      };
+      tl.to("#h1", { opacity: 1, duration: 0.2 }, 0.4);
+      tl.to("#h2", { opacity: 1, duration: 0.2 }, 2.2);
+      tl.to("#h3", { opacity: 1, duration: 0.2 }, 4.2);
+      tl.fromTo("#phone", { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.22, ease: "power2.out" }, 12.2);
+      tl.to("#phone", { opacity: 0, duration: 0.2 }, 17.4);
+      pop("#lab1", 18.2);
+      pop("#c11", 24.2);
+      tl.to("#hop", { opacity: 1, duration: 0.1 }, 24.3);
+      tl.to("#hop", { x: 0, y: 0, duration: 0.18, ease: "power3.out" }, 24.45);
+      tl.fromTo("#c11", { scale: 1 }, { scale: 1.06, duration: 0.18, yoyo: true, repeat: 1, transformOrigin: "50% 50%" }, 27.2);
+      pop("#c12", 30.3);
+      pop("#c13", 32.2);
+      pop("#lab2", 36.2);
+      pop("#c22", 42.2);
+      tl.to("#hop", { x: 316, y: 222, duration: 0.18, ease: "power3.out" }, 42.45);
+      tl.fromTo("#c22", { scale: 1 }, { scale: 1.06, duration: 0.18, yoyo: true, repeat: 1, transformOrigin: "50% 50%" }, 45.2);
+      pop("#c21", 48.3);
+      pop("#c23", 50.2);
+      pop("#lab3", 54.2);
+      pop("#c33", 60.2);
+      tl.to("#hop", { x: 620, y: 444, duration: 0.18, ease: "power3.out" }, 60.45);
+      tl.fromTo("#c33", { scale: 1 }, { scale: 1.06, duration: 0.18, yoyo: true, repeat: 1, transformOrigin: "50% 50%" }, 63.2);
+      pop("#c32", 66.3);
+      pop("#c31", 68.2);
+      tl.to("#src", { opacity: 1, duration: 0.2 }, 72.2);
+      tl.fromTo("#src", { scale: 1 }, { scale: 1.08, duration: 0.18, yoyo: true, repeat: 1, transformOrigin: "0% 50%" }, 78.3);
+      tl.to("#src", { opacity: 0, duration: 0.16 }, 83.6);
+      tl.to("#fable", { opacity: 1, duration: 0.2 }, 84.2);
+      tl.to("#hop", { x: 0, y: 0, duration: 0.18, ease: "power3.out" }, 90.3);
+      tl.to("#hop", { x: 316, y: 222, duration: 0.18, ease: "power3.out" }, 92.3);
+      tl.to("#hop", { x: 620, y: 444, duration: 0.18, ease: "power3.out" }, 94.3);
+      cap("#k1", 0, 6, false);
+      cap("#k2", 6, 6, false);
+      cap("#k3", 12, 6, false);
+      cap("#k4", 18, 6, false);
+      cap("#k5", 24, 6, false);
+      cap("#k6", 30, 6, false);
+      cap("#k7", 36, 6, false);
+      cap("#k8", 42, 6, false);
+      cap("#k9", 48, 6, false);
+      cap("#k10", 54, 6, false);
+      cap("#k11", 60, 6, false);
+      cap("#k12", 66, 6, false);
+      cap("#k13", 72, 6, false);
+      cap("#k14", 78, 6, false);
+      cap("#k15", 84, 6, false);
+      cap("#k16", 90, 6, true);
+      window.__timelines = window.__timelines || {};
+      window.__timelines["card"] = tl;
+    })();
+  </script>
+</template>

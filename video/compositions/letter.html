@@ -1,0 +1,245 @@
+<template>
+  <style>
+    @font-face {
+      font-family: "Be Vietnam Pro";
+      src: url("assets/fonts/BeVietnamPro-Bold.ttf") format("truetype");
+      font-weight: 700;
+      font-style: normal;
+    }
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background: #16130f;
+      color: #f4f1ea;
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-weight: 700;
+    }
+    #wash {
+      position: absolute;
+      left: 180px;
+      top: 360px;
+      width: 720px;
+      height: 640px;
+      background: radial-gradient(ellipse at center, rgba(224, 122, 95, 0.16), rgba(22, 19, 15, 0) 70%);
+    }
+    #typed {
+      position: absolute;
+      left: 90px;
+      top: 188px;
+      z-index: 5;
+      width: 900px;
+      margin: 0;
+      padding: 16px 22px;
+      border-radius: 16px;
+      background: #1c2430;
+      color: #f4f1ea;
+      font-size: 32px;
+      line-height: 1.3;
+      box-sizing: border-box;
+      opacity: 0;
+    }
+    #paper {
+      position: absolute;
+      left: 120px;
+      top: 300px;
+      z-index: 3;
+      width: 840px;
+      height: 760px;
+      border-radius: 16px;
+      background: #f4f1ea;
+      color: #1c2430;
+      box-shadow: 0 22px 40px rgba(0, 0, 0, 0.35);
+    }
+    #dear { position: absolute; left: 48px; top: 36px; margin: 0; font-size: 44px; }
+    #rule {
+      position: absolute;
+      left: 48px;
+      top: 100px;
+      width: 180px;
+      height: 6px;
+      border-radius: 3px;
+      background: #e7c56a;
+    }
+    #seal {
+      position: absolute;
+      right: 48px;
+      top: 36px;
+      width: 84px;
+      height: 84px;
+      border-radius: 50%;
+      border: 8px solid #c45c4a;
+      box-sizing: border-box;
+      background: #e7c56a;
+    }
+    #to { position: absolute; left: 48px; top: 128px; margin: 0; font-size: 28px; color: #6a6258; }
+    #blank {
+      position: absolute;
+      left: 48px;
+      top: 176px;
+      width: 460px;
+      height: 22px;
+      border-radius: 6px;
+      background: #e7e0d4;
+    }
+    #blank-lab {
+      position: absolute;
+      left: 48px;
+      top: 210px;
+      margin: 0;
+      color: #8a4034;
+      font-size: 30px;
+      opacity: 0;
+    }
+    .line { position: absolute; left: 48px; height: 14px; border-radius: 7px; background: #e7e0d4; }
+    #l1 { top: 290px; width: 680px; }
+    #l2 { top: 330px; width: 600px; }
+    #l3 { top: 370px; width: 640px; }
+    #l4 { top: 410px; width: 420px; }
+    #law {
+      position: absolute;
+      left: 48px;
+      top: 470px;
+      z-index: 4;
+      width: 744px;
+      margin: 0;
+      padding: 16px 18px;
+      border-radius: 14px;
+      background: #7dcec4;
+      color: #10221f;
+      font-size: 32px;
+      line-height: 1.25;
+      box-sizing: border-box;
+      opacity: 0;
+    }
+    #send {
+      position: absolute;
+      left: 48px;
+      top: 620px;
+      width: 240px;
+      height: 78px;
+      border-radius: 14px;
+      background: #1c2430;
+      color: #f4f1ea;
+      font-size: 36px;
+      line-height: 78px;
+      text-align: center;
+    }
+    #slash {
+      position: absolute;
+      left: 28px;
+      top: 36px;
+      width: 184px;
+      height: 8px;
+      border-radius: 4px;
+      background: #e07a5f;
+      opacity: 0;
+    }
+    #hop {
+      position: absolute;
+      left: 150px;
+      top: 468px;
+      z-index: 6;
+      width: 26px;
+      height: 26px;
+      background: #7dcec4;
+      clip-path: polygon(0 0, 100% 50%, 0 100%);
+    }
+    .cap {
+      position: absolute;
+      left: 64px;
+      top: 1100px;
+      z-index: 8;
+      width: 952px;
+      margin: 0;
+      font-size: 45px;
+      line-height: 1.22;
+      opacity: 0;
+    }
+    #c13 { opacity: 1; }
+    .w { color: #9a9388; }
+    .w.hot { color: #7dcec4; }
+  </style>
+  <div id="root" data-composition-id="letter" data-width="1080" data-height="1920" data-layout-allow-overlap>
+    <div id="wash"></div>
+    <p id="typed">viết thư cảm ơn, nhớ kỹ, đừng quên, làm cho đủ</p>
+    <div id="paper">
+      <p id="dear">Thư cảm ơn</p>
+      <div id="rule"></div>
+      <div id="seal"></div>
+      <p id="to">gửi tới</p>
+      <div id="blank"></div>
+      <p id="blank-lab">thiếu tên quán</p>
+      <div class="line" id="l1"></div>
+      <div class="line" id="l2"></div>
+      <div class="line" id="l3"></div>
+      <div class="line" id="l4"></div>
+      <p id="law">chưa có tên quán thì chưa gửi</p>
+      <div id="send">gửi<div id="slash"></div></div>
+    </div>
+    <div id="hop"></div>
+    <p id="c13" class="cap"><span class="w hot">Bạn</span> <span class="w">nhờ</span> <span class="w">AI</span> <span class="w">viết</span><br><span class="w" data-role="go">thư</span> <span class="w">cảm</span> <span class="w">ơn</span> <span class="w">của</span> <span class="w">quán.</span></p>
+    <p id="c14" class="cap"><span class="w hot">Thư</span> <span class="w" data-role="cost">không</span> <span class="w">có</span> <span class="w">tên</span> <span class="w">quán.</span></p>
+    <p id="c15" class="cap"><span class="w hot">Bạn</span> <span class="w">gõ</span> <span class="w">câu</span> <span class="w" data-role="cost">dài</span> <span class="w">hơn.</span><br><span class="w">Thư</span> <span class="w">vẫn</span> <span class="w">không</span> <span class="w">có</span> <span class="w">tên.</span></p>
+    <p id="c16" class="cap"><span class="w hot">Bạn</span> <span class="w">thêm</span> <span class="w">một</span> <span class="w" data-role="go">luật:</span><br><span class="w">chưa</span> <span class="w">có</span> <span class="w">tên</span> <span class="w">quán</span> <span class="w">thì</span> <span class="w">chưa</span> <span class="w">được</span> <span class="w">gửi.</span></p>
+    <p id="c17" class="cap"><span class="w hot">Luật</span> <span class="w">đó</span> <span class="w" data-role="go">nằm</span> <span class="w">lại.</span><br><span class="w">Lần</span> <span class="w">sau</span> <span class="w">bạn</span> <span class="w">khỏi</span> <span class="w">gõ</span> <span class="w">lại.</span></p>
+  </div>
+  <script>
+    (() => {
+      const tl = gsap.timeline({ paused: true });
+      const DIM = "#9a9388";
+      const CREAM = "#f4f1ea";
+      const GO = "#7dcec4";
+      const COST = "#e07a5f";
+      const tone = (el) => {
+        const role = el.getAttribute("data-role");
+        if (role === "cost") return COST;
+        if (role === "go") return GO;
+        return null;
+      };
+      const karaoke = (sel, start, dur) => {
+        const words = Array.from(document.querySelectorAll(sel + " .w"));
+        const n = words.length;
+        if (!n) return;
+        const each = Math.min(0.42, Math.max(0.18, (dur - 0.35) / n));
+        words.forEach((el, i) => {
+          const stay = tone(el);
+          const hot = stay || GO;
+          const rest = stay || CREAM;
+          const t = start + 0.06 + i * each;
+          if (i === 0) {
+            tl.fromTo(el, { color: hot }, { color: rest, duration: 0.14, immediateRender: false }, t + each * 0.7);
+          } else {
+            tl.fromTo(el, { color: DIM }, { color: hot, duration: 0.08, immediateRender: false }, t);
+            tl.fromTo(el, { color: hot }, { color: rest, duration: 0.12, immediateRender: false }, t + each * 0.55);
+          }
+        });
+      };
+      const cap = (id, start, dur, last) => {
+        if (start > 0) {
+          tl.set(id, { opacity: 0 }, 0);
+          tl.to(id, { opacity: 1, duration: 0.16 }, start);
+        }
+        karaoke(id, start, Math.max(0.8, dur - 0.28));
+        if (!last) tl.to(id, { opacity: 0, duration: 0.14 }, start + dur - 0.14);
+      };
+      tl.set("#slash", { rotation: -18, transformOrigin: "50% 50%", scaleX: 0 }, 0);
+      tl.to("#blank", { backgroundColor: "#e07a5f", duration: 0.2 }, 6.15);
+      tl.to("#blank-lab", { opacity: 1, duration: 0.18 }, 6.3);
+      tl.to("#hop", { y: 28, duration: 0.18, ease: "power3.out" }, 6.4);
+      tl.to("#typed", { opacity: 1, duration: 0.18 }, 11.1);
+      tl.to("#typed", { opacity: 0, duration: 0.16 }, 14.6);
+      tl.fromTo("#law", { opacity: 0, y: -12 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 16.15);
+      tl.to("#send", { backgroundColor: "#8a4034", duration: 0.16 }, 16.4);
+      tl.to("#slash", { opacity: 1, scaleX: 1, duration: 0.16 }, 16.45);
+      tl.to("#hop", { y: 330, duration: 0.18, ease: "power3.out" }, 16.5);
+      cap("#c13", 0, 6, false);
+      cap("#c14", 6, 5, false);
+      cap("#c15", 11, 5, false);
+      cap("#c16", 16, 6, false);
+      cap("#c17", 22, 5, true);
+      window.__timelines = window.__timelines || {};
+      window.__timelines["letter"] = tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,214 @@
+<template>
+  <style>
+    @font-face {
+      font-family: "Be Vietnam Pro";
+      src: url("assets/fonts/BeVietnamPro-Bold.ttf") format("truetype");
+      font-weight: 700;
+      font-style: normal;
+    }
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background: #0c0f14;
+      color: #f4f1ea;
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-weight: 700;
+    }
+    #wash {
+      position: absolute;
+      left: 80px;
+      top: 280px;
+      width: 920px;
+      height: 520px;
+      background: radial-gradient(ellipse at center, rgba(125, 206, 196, 0.14), rgba(12, 15, 20, 0) 70%);
+    }
+    #jar { position: absolute; left: 64px; top: 250px; z-index: 3; width: 280px; height: 340px; }
+    #jlid { position: absolute; left: 24px; top: 0; width: 232px; height: 32px; border-radius: 8px; background: #2a2420; }
+    #jglass {
+      position: absolute;
+      left: 46px;
+      top: 28px;
+      width: 188px;
+      height: 290px;
+      border-radius: 20px 20px 36px 36px;
+      border: 5px solid rgba(244, 241, 234, 0.55);
+      background: rgba(244, 241, 234, 0.08);
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+    #sugarfill { position: absolute; left: 0; right: 0; bottom: 0; height: 110px; background: #f4f1ea; }
+    .grain { position: absolute; width: 16px; height: 16px; border-radius: 50%; background: #d9d0c4; }
+    #sticker {
+      position: absolute;
+      left: 32px;
+      top: 70px;
+      width: 120px;
+      height: 96px;
+      margin: 0;
+      padding-top: 16px;
+      border-radius: 12px;
+      background: #7dcec4;
+      color: #10221f;
+      font-size: 32px;
+      line-height: 1.15;
+      text-align: center;
+      box-sizing: border-box;
+    }
+    #card {
+      position: absolute;
+      left: 400px;
+      top: 250px;
+      z-index: 3;
+      width: 600px;
+      height: 390px;
+      border-radius: 16px;
+      background: #f4f1ea;
+      color: #1c2430;
+    }
+    #dear { position: absolute; left: 28px; top: 24px; margin: 0; font-size: 36px; }
+    #blank {
+      position: absolute;
+      left: 28px;
+      top: 90px;
+      width: 280px;
+      height: 18px;
+      border-radius: 6px;
+      background: #e07a5f;
+    }
+    #miss { position: absolute; left: 28px; top: 118px; margin: 0; color: #8a4034; font-size: 28px; }
+    #law {
+      position: absolute;
+      left: 28px;
+      top: 180px;
+      width: 544px;
+      margin: 0;
+      padding: 14px 16px;
+      border-radius: 12px;
+      background: #7dcec4;
+      color: #10221f;
+      font-size: 30px;
+      line-height: 1.25;
+      box-sizing: border-box;
+    }
+    #send {
+      position: absolute;
+      left: 28px;
+      top: 290px;
+      width: 180px;
+      height: 64px;
+      border-radius: 12px;
+      background: #8a4034;
+      color: #f4f1ea;
+      font-size: 32px;
+      line-height: 64px;
+      text-align: center;
+    }
+    #slash {
+      position: absolute;
+      left: 18px;
+      top: 28px;
+      width: 144px;
+      height: 8px;
+      border-radius: 4px;
+      background: #e07a5f;
+      transform: rotate(-16deg);
+    }
+    #q {
+      position: absolute;
+      left: 72px;
+      top: 700px;
+      z-index: 3;
+      width: 936px;
+      margin: 0;
+      color: #e7c56a;
+      font-size: 58px;
+      line-height: 1.25;
+      opacity: 0;
+    }
+    .cap {
+      position: absolute;
+      left: 64px;
+      top: 1100px;
+      z-index: 8;
+      width: 952px;
+      margin: 0;
+      font-size: 45px;
+      line-height: 1.22;
+      opacity: 0;
+    }
+    #c33 { opacity: 1; }
+    .w { color: #9a9388; }
+    .w.hot { color: #7dcec4; }
+  </style>
+  <div id="root" data-composition-id="ask" data-width="1080" data-height="1920" data-layout-allow-overlap>
+    <div id="wash"></div>
+    <div id="jar">
+      <div id="jlid"></div>
+      <div id="jglass">
+        <div id="sugarfill">
+          <i class="grain" style="left:24px;top:18px"></i>
+          <i class="grain" style="left:58px;top:28px"></i>
+          <i class="grain" style="left:96px;top:16px"></i>
+          <i class="grain" style="left:130px;top:30px"></i>
+        </div>
+        <p id="sticker">hai<br>thìa</p>
+      </div>
+    </div>
+    <div id="card">
+      <p id="dear">Thư cảm ơn</p>
+      <div id="blank"></div>
+      <p id="miss">thiếu tên quán</p>
+      <p id="law">chưa có tên quán thì chưa gửi</p>
+      <div id="send">gửi<div id="slash"></div></div>
+    </div>
+    <p id="q">Luật này có nằm sẵn<br>trước khi gửi không?</p>
+    <p id="c33" class="cap"><span class="w hot">Miếng</span> <span class="w">dán</span> <span class="w">nằm</span> <span class="w">trên</span> <span class="w">hũ.</span><br><span class="w" data-role="go">Luật</span> <span class="w">chặn</span> <span class="w">nút</span> <span class="w">gửi.</span></p>
+    <p id="c34" class="cap"><span class="w hot">Lần</span> <span class="w">sau,</span> <span class="w">luật</span> <span class="w">này</span> <span class="w">có</span> <span class="w">nằm</span> <span class="w">sẵn</span><br><span class="w">trước</span> <span class="w">khi</span> <span class="w">gửi</span> <span class="w" data-role="num">không?</span></p>
+  </div>
+  <script>
+    (() => {
+      const tl = gsap.timeline({ paused: true });
+      const DIM = "#9a9388";
+      const CREAM = "#f4f1ea";
+      const GO = "#7dcec4";
+      const COST = "#e07a5f";
+      const NUM = "#e7c56a";
+      const tone = (el) => {
+        const role = el.getAttribute("data-role");
+        if (role === "num") return NUM;
+        if (role === "cost") return COST;
+        if (role === "go") return GO;
+        return null;
+      };
+      const karaoke = (sel, start, dur) => {
+        const words = Array.from(document.querySelectorAll(sel + " .w"));
+        const n = words.length;
+        if (!n) return;
+        const each = Math.min(0.4, Math.max(0.16, (dur - 0.3) / n));
+        words.forEach((el, i) => {
+          const stay = tone(el);
+          const hot = stay || GO;
+          const rest = stay || CREAM;
+          const t = start + 0.05 + i * each;
+          if (i === 0) {
+            tl.fromTo(el, { color: hot }, { color: rest, duration: 0.12, immediateRender: false }, t + each * 0.7);
+          } else {
+            tl.fromTo(el, { color: DIM }, { color: hot, duration: 0.08, immediateRender: false }, t);
+            tl.fromTo(el, { color: hot }, { color: rest, duration: 0.1, immediateRender: false }, t + each * 0.55);
+          }
+        });
+      };
+      tl.fromTo("#jar", { y: 16 }, { y: 0, duration: 0.28, ease: "power2.out" }, 0.15);
+      tl.fromTo("#card", { y: 16 }, { y: 0, duration: 0.28, ease: "power2.out" }, 0.35);
+      tl.to("#q", { opacity: 1, duration: 0.25 }, 5.15);
+      tl.set("#c34", { opacity: 0 }, 0);
+      tl.to("#c33", { opacity: 0, duration: 0.14 }, 4.86);
+      tl.to("#c34", { opacity: 1, duration: 0.16 }, 5);
+      karaoke("#c33", 0, 4.6);
+      karaoke("#c34", 5, 5.5);
+      window.__timelines = window.__timelines || {};
+      window.__timelines["ask"] = tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,177 @@
+<template>
+  <style>
+    @font-face {
+      font-family: "Be Vietnam Pro";
+      src: url("assets/fonts/BeVietnamPro-Bold.ttf") format("truetype");
+      font-weight: 700;
+      font-style: normal;
+    }
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background: #10141a;
+      color: #f4f1ea;
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-weight: 700;
+    }
+    #rail {
+      position: absolute;
+      left: 150px;
+      top: 280px;
+      z-index: 2;
+      width: 8px;
+      height: 700px;
+      border-radius: 4px;
+      background: #1c2430;
+    }
+    .dot {
+      position: absolute;
+      left: 134px;
+      z-index: 3;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #1c2430;
+      opacity: 0;
+    }
+    #d1 { top: 280px; background: #e7c56a; }
+    #d2 { top: 540px; }
+    #d3 { top: 800px; }
+    .mark {
+      position: absolute;
+      left: 210px;
+      z-index: 3;
+      width: 500px;
+      margin: 0;
+      opacity: 0;
+    }
+    .when { font-size: 32px; color: #e7c56a; }
+    .who { margin-top: 8px; font-size: 36px; line-height: 1.25; }
+    #m1 { top: 260px; }
+    #m2 { top: 520px; }
+    #m3 { top: 780px; }
+    #mini {
+      position: absolute;
+      left: 720px;
+      top: 250px;
+      z-index: 4;
+      width: 250px;
+      height: 200px;
+      opacity: 0;
+    }
+    #mlid { position: absolute; left: 20px; top: 0; width: 200px; height: 22px; border-radius: 6px; background: #2a2420; }
+    #mglass {
+      position: absolute;
+      left: 40px;
+      top: 18px;
+      width: 160px;
+      height: 168px;
+      border-radius: 16px 16px 28px 28px;
+      border: 4px solid rgba(244, 241, 234, 0.5);
+      box-sizing: border-box;
+      background: rgba(244, 241, 234, 0.08);
+      overflow: hidden;
+    }
+    #msugar { position: absolute; left: 0; right: 0; bottom: 0; height: 58px; background: #f4f1ea; }
+    #mst {
+      position: absolute;
+      left: 26px;
+      top: 28px;
+      width: 104px;
+      height: 72px;
+      margin: 0;
+      padding-top: 8px;
+      border-radius: 8px;
+      background: #7dcec4;
+      color: #10221f;
+      font-size: 28px;
+      line-height: 1.1;
+      text-align: center;
+      box-sizing: border-box;
+    }
+    .cap {
+      position: absolute;
+      left: 64px;
+      top: 1100px;
+      z-index: 8;
+      width: 952px;
+      margin: 0;
+      font-size: 45px;
+      line-height: 1.22;
+      opacity: 0;
+    }
+    #c29 { opacity: 1; }
+    .w { color: #9a9388; }
+    .w.hot { color: #7dcec4; }
+  </style>
+  <div id="root" data-composition-id="origin" data-width="1080" data-height="1920" data-layout-allow-overlap>
+    <div id="rail"></div>
+    <div class="dot" id="d1"></div>
+    <div class="dot" id="d2"></div>
+    <div class="dot" id="d3"></div>
+    <div class="mark" id="m1"><div class="when">5/2/2026</div><div class="who">Mitchell Hashimoto<br>viết ra tên</div></div>
+    <div class="mark" id="m2"><div class="when">11/2/2026</div><div class="who">OpenAI<br>đưa lên tiêu đề</div></div>
+    <div class="mark" id="m3"><div class="when">10/3/2026</div><div class="who">Vivek Trivedy<br>bộ AI + Harness</div></div>
+    <div id="mini"><div id="mlid"></div><div id="mglass"><div id="msugar"></div><p id="mst">hai<br>thìa</p></div></div>
+    <p id="c29" class="cap"><span class="w hot">Ngày</span> <span class="w">5</span> <span class="w">tháng</span> <span class="w">2</span> <span class="w">năm</span> <span class="w" data-role="num">2026,</span><br><span class="w">Mitchell</span> <span class="w">Hashimoto</span> <span class="w">viết</span> <span class="w">ra</span> <span class="w">tên</span><br><span class="w">Harness</span> <span class="w">engineering.</span></p>
+    <p id="c30" class="cap"><span class="w hot">Với</span> <span class="w">ông,</span> <span class="w">mỗi</span> <span class="w">lỗi</span> <span class="w">nên</span> <span class="w">thành</span><br><span class="w">một</span> <span class="w" data-role="go">luật</span> <span class="w">còn</span> <span class="w">ở</span> <span class="w">lại,</span><br><span class="w">như</span> <span class="w">miếng</span> <span class="w">dán</span> <span class="w">trên</span> <span class="w">hũ.</span></p>
+    <p id="c31" class="cap"><span class="w hot" data-role="num">Sáu</span> <span class="w">ngày</span> <span class="w">sau,</span> <span class="w">OpenAI</span><br><span class="w">đặt</span> <span class="w">tên</span> <span class="w">này</span> <span class="w">lên</span> <span class="w">tiêu</span> <span class="w">đề.</span></p>
+    <p id="c32" class="cap"><span class="w hot">Ngày</span> <span class="w">10</span> <span class="w">tháng</span> <span class="w">3,</span><br><span class="w">Vivek</span> <span class="w">Trivedy</span> <span class="w">viết:</span> <span class="w">bộ</span> <span class="w">AI,</span><br><span class="w">cộng</span> <span class="w">phần</span> <span class="w" data-role="go">Harness</span> <span class="w">quanh</span> <span class="w">nó.</span></p>
+  </div>
+  <script>
+    (() => {
+      const tl = gsap.timeline({ paused: true });
+      const DIM = "#9a9388";
+      const CREAM = "#f4f1ea";
+      const GO = "#7dcec4";
+      const NUM = "#e7c56a";
+      const tone = (el) => {
+        const role = el.getAttribute("data-role");
+        if (role === "num") return NUM;
+        if (role === "go") return GO;
+        return null;
+      };
+      const karaoke = (sel, start, dur) => {
+        const words = Array.from(document.querySelectorAll(sel + " .w"));
+        const n = words.length;
+        if (!n) return;
+        const each = Math.min(0.36, Math.max(0.14, (dur - 0.3) / n));
+        words.forEach((el, i) => {
+          const stay = tone(el);
+          const hot = stay || GO;
+          const rest = stay || CREAM;
+          const t = start + 0.04 + i * each;
+          if (i === 0) {
+            tl.fromTo(el, { color: hot }, { color: rest, duration: 0.1, immediateRender: false }, t + each * 0.65);
+          } else {
+            tl.fromTo(el, { color: DIM }, { color: hot, duration: 0.07, immediateRender: false }, t);
+            tl.fromTo(el, { color: hot }, { color: rest, duration: 0.1, immediateRender: false }, t + each * 0.5);
+          }
+        });
+      };
+      const cap = (id, start, dur, last) => {
+        if (start > 0) {
+          tl.set(id, { opacity: 0 }, 0);
+          tl.to(id, { opacity: 1, duration: 0.16 }, start);
+        }
+        karaoke(id, start, Math.max(0.8, dur - 0.24));
+        if (!last) tl.to(id, { opacity: 0, duration: 0.14 }, start + dur - 0.14);
+      };
+      tl.to("#d1", { opacity: 1, duration: 0.18 }, 0.25);
+      tl.to("#m1", { opacity: 1, duration: 0.2 }, 0.4);
+      tl.to("#mini", { opacity: 1, duration: 0.2 }, 6.2);
+      tl.to("#mini", { opacity: 0, duration: 0.2 }, 11.4);
+      tl.to("#d2", { opacity: 1, backgroundColor: "#e7c56a", duration: 0.18 }, 12.15);
+      tl.to("#m2", { opacity: 1, duration: 0.2 }, 12.3);
+      tl.to("#d3", { opacity: 1, backgroundColor: "#7dcec4", duration: 0.18 }, 17.15);
+      tl.to("#m3", { opacity: 1, duration: 0.2 }, 17.3);
+      cap("#c29", 0, 6, false);
+      cap("#c30", 6, 6, false);
+      cap("#c31", 12, 5, false);
+      cap("#c32", 17, 6, true);
+      window.__timelines = window.__timelines || {};
+      window.__timelines["origin"] = tl;
+    })();
+  </script>
+</template>

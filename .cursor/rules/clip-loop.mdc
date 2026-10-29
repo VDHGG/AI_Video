@@ -1,0 +1,31 @@
+---
+description: Closed loop for a vertical explainer. Self-check against the episode 001 bar before asking for a review.
+alwaysApply: true
+---
+
+# Chu trình một clip
+
+Mẫu đang giữ: `exports/previews/001-db-index-110-v7.mp4`. Episode sau đạt lời giảng, cú nhảy, bảng trước/sau, và nhịp của bản đó. Thêm ví dụ đời thường ở sân đầu và nền đổi theo sân. Không chép bài index sang chủ đề khác.
+
+Giọng, bảng, cú nhảy, dải chữ, và vùng an toàn đã chốt trong rule. Không hỏi lại những việc đó. Dừng để người duyệt thời lượng, mọi bước tốn tiền, và bản draft.
+
+1. Gói trong `episodes/<id>/`: `brief.md` (khán giả, một ví dụ đời thường, đề xuất thời lượng), `script.md` (3 hook, một hook được chọn, lời giảng chưa gắn giây), `design.md` (mỗi sân: vật, thứ chạy, nền, bảng trước/sau nếu có so sánh). Dừng. Xem `.cursor/rules/clip-duration.mdc`.
+2. Sau khi có số giây: `storyboard.md`. Chạy skill `humanizer` lên mọi câu người xem đọc, theo `.cursor/rules/human-voice.mdc`.
+3. Dựng trong `video/`. Một composition dùng lại, đổi nội dung episode. Đọc skill `hyperframes` trước khi sửa HTML.
+4. `npx --yes hyperframes@0.8.207 check --json` trong `video/`. Snapshot các mốc đổi sân và mốc giữa mỗi câu chữ. Nhìn frame.
+5. Tự đối chiếu, ghi vào `video/REVIEW.md`. Chưa đạt thì sửa, chưa render.
+6. Render draft bằng CLI trực tiếp, đường ra tuyệt đối trong `exports/previews/`. `npm run render --` nuốt cờ. `delivery` chỉ sau khi người duyệt nhận bản draft.
+7. `ffprobe` khớp số giây đã duyệt. Đưa đường file. Chờ.
+
+## Tự đối chiếu
+
+- Sân đầu có ví dụ đời thường, sân sau mới là vật kỹ thuật.
+- Hết các câu cấm trong `.cursor/rules/human-voice.mdc`. Từ bài đang dạy giữ tiếng Anh. Từ phổ thông như note và Follow giữ tiếng Anh. Câu cuối đúng câu follow chuẩn. Hết câu dịch word-by-word.
+- Mỗi câu dải chữ giữ khoảng 5–6 giây, và trong lúc đó sân vẫn có dấu mới.
+- Chỗ so sánh là hai cột hoặc bảng trước/sau. Phía chậm và phía nhanh khác màu, cả hai nhìn ra trên điện thoại.
+- Con trỏ nhảy, không bò hết bảng.
+- Nền đổi khi đổi sân, vẫn trong họ tối của `#0c0f14`.
+- Số khớp `measure.md`. Snapshot còn dấu tiếng Việt và nằm trong vùng an toàn.
+- Check sạch. File draft không rỗng, đúng số giây đã duyệt.
+
+Chưa có câu nhận bản draft thì chưa mở episode sau, và chưa xóa file đang là mẫu.

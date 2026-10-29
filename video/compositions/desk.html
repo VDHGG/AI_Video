@@ -1,0 +1,258 @@
+<template>
+  <style>
+    @font-face {
+      font-family: "Be Vietnam Pro";
+      src: url("assets/fonts/BeVietnamPro-Bold.ttf") format("truetype");
+      font-weight: 700;
+      font-style: normal;
+    }
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background: #14110e;
+      color: #f4f1ea;
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-weight: 700;
+    }
+    #glow {
+      position: absolute;
+      left: 180px;
+      top: 280px;
+      z-index: 1;
+      width: 720px;
+      height: 360px;
+      background: radial-gradient(ellipse at center, rgba(224, 160, 70, 0.38), rgba(20, 17, 14, 0) 70%);
+    }
+    #wall {
+      position: absolute;
+      left: 48px;
+      top: 200px;
+      z-index: 1;
+      width: 984px;
+      height: 430px;
+      border-radius: 22px;
+      background: #1c1713;
+    }
+    #band {
+      position: absolute;
+      left: 48px;
+      top: 200px;
+      z-index: 2;
+      width: 984px;
+      height: 16px;
+      border-radius: 22px 22px 0 0;
+      background: repeating-linear-gradient(90deg, #c45c4a 0 48px, #e7c56a 48px 96px, #7dcec4 96px 144px, #d4894a 144px 192px);
+    }
+    #lamp {
+      position: absolute;
+      left: 470px;
+      top: 168px;
+      z-index: 4;
+      width: 140px;
+      height: 70px;
+    }
+    #cord { position: absolute; left: 66px; top: 0; width: 8px; height: 28px; background: #3a322c; }
+    #shade {
+      position: absolute;
+      left: 18px;
+      top: 22px;
+      width: 104px;
+      height: 48px;
+      border-radius: 8px 8px 18px 18px;
+      background: #e7c56a;
+    }
+    #desk-top {
+      position: absolute;
+      left: 36px;
+      top: 760px;
+      z-index: 3;
+      width: 1008px;
+      height: 28px;
+      border-radius: 8px 8px 0 0;
+      background: #c4895a;
+    }
+    #desk-front {
+      position: absolute;
+      left: 36px;
+      top: 788px;
+      z-index: 3;
+      width: 1008px;
+      height: 86px;
+      border-radius: 0 0 16px 16px;
+      background: #4a3022;
+    }
+    .person { position: absolute; top: 430px; z-index: 4; width: 150px; height: 250px; }
+    #p1 { left: 150px; }
+    #p2 { left: 465px; }
+    #p3 { left: 780px; }
+    .head { position: absolute; left: 28px; top: 0; width: 92px; height: 92px; border-radius: 50%; background: #f0c9a0; }
+    .eye { position: absolute; top: 36px; width: 10px; height: 10px; border-radius: 50%; background: #1a1410; }
+    .e1 { left: 22px; }
+    .e2 { left: 58px; }
+    .smile {
+      position: absolute;
+      left: 28px;
+      top: 56px;
+      width: 32px;
+      height: 14px;
+      border-bottom: 4px solid #1a1410;
+      border-radius: 0 0 16px 16px;
+    }
+    .body { position: absolute; left: 18px; top: 84px; width: 112px; height: 150px; border-radius: 40px 40px 16px 16px; }
+    #p1 .body { background: #c45c4a; }
+    #p2 .body { background: #d4894a; }
+    #p3 .body { background: #8d6a4a; }
+    .sheet-wrap { position: absolute; top: 520px; z-index: 5; width: 230px; height: 250px; }
+    #s1 { left: 110px; }
+    #s2 { left: 425px; }
+    #s3 { left: 740px; }
+    .sheet {
+      position: absolute;
+      inset: 0;
+      border-radius: 16px;
+      background: #f4f1ea;
+      box-shadow: 0 18px 0 #d9d0c2;
+    }
+    #s1 .sheet { transform: rotate(-2.5deg); }
+    #s2 .sheet { transform: rotate(1.5deg); }
+    #s3 .sheet { transform: rotate(-1deg); }
+    .rule { position: absolute; left: 28px; height: 10px; border-radius: 5px; background: #d9d0c2; }
+    .subj {
+      position: absolute;
+      left: 16px;
+      top: 28px;
+      width: 198px;
+      margin: 0;
+      color: #1a1410;
+      font-size: 30px;
+      line-height: 1.1;
+      opacity: 0;
+    }
+    #star {
+      position: absolute;
+      left: 196px;
+      top: 640px;
+      z-index: 6;
+      width: 58px;
+      height: 58px;
+      background: #e7c56a;
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    }
+    #pencil {
+      position: absolute;
+      left: 48px;
+      top: 800px;
+      z-index: 6;
+      width: 120px;
+      height: 18px;
+      border-radius: 9px;
+      background: #e07a5f;
+    }
+    #pencil i {
+      position: absolute;
+      right: -16px;
+      top: -4px;
+      width: 0;
+      height: 0;
+      border-top: 13px solid transparent;
+      border-bottom: 13px solid transparent;
+      border-left: 18px solid #e7c56a;
+    }
+    .cap {
+      position: absolute;
+      left: 64px;
+      top: 1080px;
+      z-index: 9;
+      width: 952px;
+      margin: 0;
+      font-size: 45px;
+      line-height: 1.22;
+      opacity: 0;
+    }
+    #c1 { opacity: 1; }
+    .w { color: #9a9388; }
+    .w.hot { color: #7dcec4; }
+  </style>
+  <div id="root" data-composition-id="desk" data-width="1080" data-height="1920" data-layout-allow-overlap>
+    <div id="glow"></div>
+    <div id="wall"></div>
+    <div id="band"></div>
+    <div id="lamp"><div id="cord"></div><div id="shade"></div></div>
+    <div class="person" id="p1"><div class="head"><i class="eye e1"></i><i class="eye e2"></i><i class="smile"></i></div><div class="body"></div></div>
+    <div class="person" id="p2"><div class="head"><i class="eye e1"></i><i class="eye e2"></i><i class="smile"></i></div><div class="body"></div></div>
+    <div class="person" id="p3"><div class="head"><i class="eye e1"></i><i class="eye e2"></i><i class="smile"></i></div><div class="body"></div></div>
+    <div class="sheet-wrap" id="s1"><div class="sheet"><p class="subj" id="sub1">Sử</p><i class="rule" style="top:110px;width:160px"></i><i class="rule" style="top:140px;width:120px"></i><i class="rule" style="top:170px;width:140px"></i></div></div>
+    <div class="sheet-wrap" id="s2"><div class="sheet"><p class="subj" id="sub2">Thực hành</p><i class="rule" style="top:110px;width:150px"></i><i class="rule" style="top:140px;width:170px"></i><i class="rule" style="top:170px;width:100px"></i></div></div>
+    <div class="sheet-wrap" id="s3"><div class="sheet"><p class="subj" id="sub3">Máy tính</p><i class="rule" style="top:110px;width:150px"></i><i class="rule" style="top:140px;width:130px"></i><i class="rule" style="top:170px;width:160px"></i></div></div>
+    <div id="star"></div>
+    <div id="pencil"><i></i></div>
+    <div id="desk-top"></div>
+    <div id="desk-front"></div>
+    <p id="c1" class="cap"><span class="w hot">Ba</span> <span class="w">bài</span> <span class="w">vừa</span> <span class="w" data-role="go">trả</span> <span class="w">về</span> <span class="w">bàn.</span></p>
+    <p id="c2" class="cap"><span class="w hot">Môn</span> <span class="w">sử,</span> <span class="w">bạn</span> <span class="w">bên</span> <span class="w">trái</span> <span class="w">đứng</span> <span class="w" data-role="num">nhất.</span></p>
+    <p id="c3" class="cap"><span class="w hot">Môn</span> <span class="w">thực</span> <span class="w">hành,</span> <span class="w">bạn</span> <span class="w">ở</span> <span class="w">giữa</span> <span class="w">đứng</span> <span class="w" data-role="num">nhất.</span></p>
+    <p id="c4" class="cap"><span class="w hot">Môn</span> <span class="w">máy</span> <span class="w">tính,</span> <span class="w">bạn</span> <span class="w">bên</span> <span class="w">phải</span> <span class="w">đứng</span> <span class="w" data-role="num">nhất.</span></p>
+    <p id="c5" class="cap"><span class="w hot">Hỏi</span> <span class="w">ai</span> <span class="w">giỏi</span> <span class="w">hơn</span> <span class="w">thì</span> <span class="w">phải</span> <span class="w">chỉ</span> <span class="w">một</span> <span class="w" data-role="num">môn.</span></p>
+  </div>
+  <script>
+    (() => {
+      const tl = gsap.timeline({ paused: true });
+      const DIM = "#9a9388";
+      const CREAM = "#f4f1ea";
+      const GO = "#7dcec4";
+      const NUM = "#e7c56a";
+      const tone = (el) => {
+        const role = el.getAttribute("data-role");
+        if (role === "num" || role === "gold") return NUM;
+        if (role === "go") return GO;
+        return null;
+      };
+      const karaoke = (sel, start, dur) => {
+        const words = Array.from(document.querySelectorAll(sel + " .w"));
+        const n = words.length;
+        if (!n) return;
+        const each = Math.min(0.42, Math.max(0.18, (dur - 0.35) / n));
+        words.forEach((el, i) => {
+          const stay = tone(el);
+          const hot = stay || GO;
+          const rest = stay || CREAM;
+          const t = start + 0.06 + i * each;
+          if (i === 0) {
+            tl.fromTo(el, { color: hot }, { color: rest, duration: 0.14, immediateRender: false }, t + each * 0.7);
+          } else {
+            tl.fromTo(el, { color: DIM }, { color: hot, duration: 0.08, immediateRender: false }, t);
+            tl.fromTo(el, { color: hot }, { color: rest, duration: 0.12, immediateRender: false }, t + each * 0.55);
+          }
+        });
+      };
+      const cap = (id, start, dur, last) => {
+        if (start > 0) {
+          tl.set(id, { opacity: 0 }, 0);
+          tl.to(id, { opacity: 1, duration: 0.16 }, start);
+        }
+        karaoke(id, start, Math.max(0.8, dur - 0.28));
+        if (!last) tl.to(id, { opacity: 0, duration: 0.14 }, start + dur - 0.14);
+      };
+      tl.to("#shade", { rotation: 4, duration: 2.2, ease: "sine.inOut", yoyo: true, repeat: 12, transformOrigin: "50% 0%" }, 0.2);
+      tl.to("#p2", { y: -8, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 8 }, 0.4);
+      tl.fromTo("#pencil", { rotation: -8 }, { rotation: 10, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1, transformOrigin: "0% 50%" }, 2.4);
+      tl.to("#sub1", { opacity: 1, duration: 0.18 }, 6.2);
+      tl.fromTo("#star", { scale: 1 }, { scale: 1.18, duration: 0.18, ease: "power2.out", yoyo: true, repeat: 1 }, 8.2);
+      tl.to("#star", { x: 315, duration: 0.18, ease: "power3.out" }, 12.1);
+      tl.to("#sub2", { opacity: 1, duration: 0.18 }, 12.4);
+      tl.to("#star", { x: 630, duration: 0.18, ease: "power3.out" }, 18.1);
+      tl.to("#sub3", { opacity: 1, duration: 0.18 }, 18.4);
+      tl.fromTo("#sub1", { color: "#1a1410" }, { color: "#e7c56a", duration: 0.16, yoyo: true, repeat: 1 }, 24.3);
+      tl.fromTo("#sub2", { color: "#1a1410" }, { color: "#e7c56a", duration: 0.16, yoyo: true, repeat: 1 }, 26.3);
+      tl.fromTo("#sub3", { color: "#1a1410" }, { color: "#e7c56a", duration: 0.16, yoyo: true, repeat: 1 }, 28.3);
+      cap("#c1", 0, 6, false);
+      cap("#c2", 6, 6, false);
+      cap("#c3", 12, 6, false);
+      cap("#c4", 18, 6, false);
+      cap("#c5", 24, 6, true);
+      window.__timelines = window.__timelines || {};
+      window.__timelines["desk"] = tl;
+    })();
+  </script>
+</template>

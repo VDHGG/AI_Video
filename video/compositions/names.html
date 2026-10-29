@@ -1,0 +1,231 @@
+<template>
+  <style>
+    @font-face {
+      font-family: "Be Vietnam Pro";
+      src: url("assets/fonts/BeVietnamPro-Bold.ttf") format("truetype");
+      font-weight: 700;
+      font-style: normal;
+    }
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background: #0c0f14;
+      color: #f4f1ea;
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-weight: 700;
+    }
+    #speech {
+      position: absolute;
+      left: 64px;
+      top: 200px;
+      z-index: 3;
+      margin: 0;
+      padding: 18px 24px;
+      border-radius: 18px;
+      background: #1c2430;
+      font-size: 36px;
+    }
+    #sheet {
+      position: absolute;
+      left: 64px;
+      top: 430px;
+      z-index: 3;
+      width: 300px;
+      height: 168px;
+      border-radius: 14px;
+      background: #f4f1ea;
+      color: #1c2430;
+      box-sizing: border-box;
+      padding: 20px 18px 0;
+    }
+    #sheet p { margin: 0 0 8px; font-size: 32px; }
+    #sheet .amt { color: #8a4034; font-size: 34px; }
+    .sl { height: 10px; margin-top: 14px; border-radius: 6px; background: #e7e0d4; }
+    #book {
+      position: absolute;
+      left: 52px;
+      top: 410px;
+      z-index: 4;
+      width: 330px;
+      height: 200px;
+      border-radius: 12px;
+      background: #8a4034;
+      opacity: 0;
+    }
+    #book-page {
+      position: absolute;
+      left: 24px;
+      top: 18px;
+      width: 286px;
+      height: 164px;
+      border-radius: 8px;
+      background: #f4f1ea;
+    }
+    #book-miss { position: absolute; left: 20px; top: 70px; width: 180px; height: 16px; border-radius: 6px; background: #e07a5f; }
+    #plank {
+      position: absolute;
+      left: 48px;
+      top: 940px;
+      z-index: 2;
+      width: 360px;
+      height: 22px;
+      border-radius: 6px;
+      background: #4a3022;
+    }
+    #jar { position: absolute; left: 64px; top: 700px; z-index: 3; width: 230px; height: 230px; }
+    #jlid { position: absolute; left: 18px; top: 0; width: 194px; height: 26px; border-radius: 8px; background: #2a2420; }
+    #jglass {
+      position: absolute;
+      left: 36px;
+      top: 22px;
+      width: 158px;
+      height: 196px;
+      border-radius: 18px 18px 28px 28px;
+      border: 4px solid rgba(244, 241, 234, 0.55);
+      background: rgba(244, 241, 234, 0.08);
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+    #sugarfill { position: absolute; left: 0; right: 0; bottom: 0; height: 78px; background: #f4f1ea; }
+    #sticker {
+      position: absolute;
+      left: 22px;
+      top: 28px;
+      width: 110px;
+      height: 78px;
+      box-sizing: border-box;
+      padding-top: 10px;
+      border-radius: 10px;
+      background: #7dcec4;
+      color: #10221f;
+      font-size: 28px;
+      line-height: 1.15;
+      text-align: center;
+    }
+    .lab { position: absolute; left: 560px; z-index: 5; margin: 0; opacity: 0; }
+    .name { font-size: 48px; }
+    .full { font-size: 30px; }
+    #lab-p { top: 210px; color: #e7c56a; }
+    #lab-pe { top: 276px; color: #e7c56a; }
+    #lab-c { top: 460px; color: #e7c56a; }
+    #lab-ce { top: 526px; color: #e7c56a; }
+    #lab-h { top: 730px; color: #7dcec4; }
+    #lab-he { top: 796px; color: #7dcec4; }
+    #hop {
+      position: absolute;
+      left: 16px;
+      top: 214px;
+      z-index: 6;
+      width: 26px;
+      height: 26px;
+      background: #7dcec4;
+      clip-path: polygon(0 0, 100% 50%, 0 100%);
+    }
+    .cap {
+      position: absolute;
+      left: 64px;
+      top: 1100px;
+      z-index: 8;
+      width: 952px;
+      margin: 0;
+      font-size: 45px;
+      line-height: 1.22;
+      opacity: 0;
+    }
+    #c18 { opacity: 1; }
+    .w { color: #9a9388; }
+    .w.hot { color: #7dcec4; }
+  </style>
+  <div id="root" data-composition-id="names" data-width="1080" data-height="1920" data-layout-allow-overlap>
+    <p id="speech">làm trà sữa</p>
+    <div id="sheet">
+      <p>công thức</p>
+      <p class="amt">2 thìa</p>
+      <div class="sl"></div>
+    </div>
+    <div id="book" data-layout-allow-occlusion><div id="book-page"><div id="book-miss"></div></div></div>
+    <div id="plank"></div>
+    <div id="jar">
+      <div id="jlid"></div>
+      <div id="jglass"><div id="sugarfill"></div><p id="sticker">hai<br>thìa</p></div>
+    </div>
+    <p id="lab-p" class="lab name">Prompt</p>
+    <p id="lab-pe" class="lab full">Prompt engineering</p>
+    <p id="lab-c" class="lab name">Context</p>
+    <p id="lab-ce" class="lab full">Context engineering</p>
+    <p id="lab-h" class="lab name">Harness</p>
+    <p id="lab-he" class="lab full">Harness engineering</p>
+    <div id="hop"></div>
+    <p id="c18" class="cap"><span class="w hot">Câu</span> <span class="w">nói</span> <span class="w">với</span> <span class="w">người</span> <span class="w">pha,</span><br><span class="w">và</span> <span class="w">câu</span> <span class="w">gõ</span> <span class="w">cho</span> <span class="w">AI,</span> <span class="w">gọi</span> <span class="w">là</span> <span class="w" data-role="num">Prompt.</span></p>
+    <p id="c19" class="cap"><span class="w hot">Viết</span> <span class="w">câu</span> <span class="w">ấy</span> <span class="w">cho</span> <span class="w">rõ.</span><br><span class="w">Đó</span> <span class="w">là</span> <span class="w" data-role="num">Prompt</span> <span class="w" data-role="num">engineering.</span></p>
+    <p id="c20" class="cap"><span class="w hot">Tờ</span> <span class="w">công</span> <span class="w">thức</span> <span class="w">trên</span> <span class="w">quầy</span><br><span class="w">gọi</span> <span class="w">là</span> <span class="w" data-role="num">Context.</span></p>
+    <p id="c21" class="cap"><span class="w hot">Chọn</span> <span class="w">đúng</span> <span class="w">tờ</span> <span class="w">cho</span> <span class="w">việc</span> <span class="w">đang</span> <span class="w">làm.</span><br><span class="w">Đó</span> <span class="w">là</span> <span class="w" data-role="num">Context</span> <span class="w" data-role="num">engineering.</span></p>
+    <p id="c22" class="cap"><span class="w hot">Cuốn</span> <span class="w">sổ</span> <span class="w">dày</span> <span class="w">là</span> <span class="w">nhét</span> <span class="w">quá</span> <span class="w" data-role="cost">nhiều</span> <span class="w">thứ.</span><br><span class="w">Họ</span> <span class="w">lật</span> <span class="w">nhầm</span> <span class="w">trang.</span></p>
+    <p id="c23" class="cap"><span class="w hot">Miếng</span> <span class="w">dán</span> <span class="w">và</span> <span class="w">lần</span> <span class="w">nếm</span><br><span class="w">gọi</span> <span class="w">là</span> <span class="w" data-role="go">Harness.</span></p>
+    <p id="c24" class="cap"><span class="w hot">Dựng</span> <span class="w">phần</span> <span class="w">ấy</span> <span class="w">cho</span> <span class="w">AI.</span><br><span class="w">Đó</span> <span class="w">là</span> <span class="w" data-role="go">Harness</span> <span class="w" data-role="go">engineering.</span></p>
+  </div>
+  <script>
+    (() => {
+      const tl = gsap.timeline({ paused: true });
+      const DIM = "#9a9388";
+      const CREAM = "#f4f1ea";
+      const GO = "#7dcec4";
+      const COST = "#e07a5f";
+      const NUM = "#e7c56a";
+      const tone = (el) => {
+        const role = el.getAttribute("data-role");
+        if (role === "num") return NUM;
+        if (role === "cost") return COST;
+        if (role === "go") return GO;
+        return null;
+      };
+      const karaoke = (sel, start, dur) => {
+        const words = Array.from(document.querySelectorAll(sel + " .w"));
+        const n = words.length;
+        if (!n) return;
+        const each = Math.min(0.4, Math.max(0.16, (dur - 0.3) / n));
+        words.forEach((el, i) => {
+          const stay = tone(el);
+          const hot = stay || GO;
+          const rest = stay || CREAM;
+          const t = start + 0.05 + i * each;
+          if (i === 0) {
+            tl.fromTo(el, { color: hot }, { color: rest, duration: 0.12, immediateRender: false }, t + each * 0.7);
+          } else {
+            tl.fromTo(el, { color: DIM }, { color: hot, duration: 0.08, immediateRender: false }, t);
+            tl.fromTo(el, { color: hot }, { color: rest, duration: 0.1, immediateRender: false }, t + each * 0.55);
+          }
+        });
+      };
+      const cap = (id, start, dur, last) => {
+        if (start > 0) {
+          tl.set(id, { opacity: 0 }, 0);
+          tl.to(id, { opacity: 1, duration: 0.16 }, start);
+        }
+        karaoke(id, start, Math.max(0.8, dur - 0.26));
+        if (!last) tl.to(id, { opacity: 0, duration: 0.14 }, start + dur - 0.14);
+      };
+      tl.to("#lab-p", { opacity: 1, duration: 0.2 }, 0.4);
+      tl.to("#lab-pe", { opacity: 1, duration: 0.2 }, 6.15);
+      tl.to("#hop", { y: 260, duration: 0.18, ease: "power3.out" }, 11.15);
+      tl.to("#lab-c", { opacity: 1, duration: 0.2 }, 11.3);
+      tl.to("#lab-ce", { opacity: 1, duration: 0.2 }, 16.2);
+      tl.to("#book", { opacity: 1, duration: 0.18 }, 22.15);
+      tl.to("#hop", { y: 240, duration: 0.18, ease: "power3.out" }, 22.3);
+      tl.to("#book", { x: 80, opacity: 0, duration: 0.28 }, 26.4);
+      tl.to("#hop", { y: 530, duration: 0.18, ease: "power3.out" }, 28.15);
+      tl.to("#lab-h", { opacity: 1, duration: 0.2 }, 28.3);
+      tl.to("#lab-he", { opacity: 1, duration: 0.2 }, 33.15);
+      cap("#c18", 0, 6, false);
+      cap("#c19", 6, 5, false);
+      cap("#c20", 11, 5, false);
+      cap("#c21", 16, 6, false);
+      cap("#c22", 22, 6, false);
+      cap("#c23", 28, 5, false);
+      cap("#c24", 33, 5, true);
+      window.__timelines = window.__timelines || {};
+      window.__timelines["names"] = tl;
+    })();
+  </script>
+</template>

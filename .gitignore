@@ -1,0 +1,11 @@
+video/.hyperframes/
+video/node_modules/
+
+# Staging folders the HyperFrames CLI left behind. Not the video project.
+HyperFrames/
+
+# Copies downloaded while reading other repos.
+.skill-audit-tmp/
+
+# Stills pulled out of a draft to look at frames.
+exports/previews/frames002/

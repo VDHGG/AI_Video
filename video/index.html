@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      html,
+      body {
+        margin: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #0c0f14;
+      }
+      #root {
+        position: absolute;
+        inset: 0;
+        background: #0c0f14;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="132"
+      data-fps="60"
+      data-width="1080"
+      data-height="1920"
+    >
+      <div
+        id="desk"
+        class="clip"
+        data-composition-id="desk"
+        data-composition-src="compositions/desk.html"
+        data-start="0"
+        data-duration="30"
+        data-track-index="0"
+        data-track-kind="graphics"
+        data-width="1080"
+        data-height="1920"
+      ></div>
+      <div
+        id="card"
+        class="clip"
+        data-composition-id="card"
+        data-composition-src="compositions/card.html"
+        data-start="30"
+        data-duration="96"
+        data-track-index="1"
+        data-track-kind="graphics"
+        data-width="1080"
+        data-height="1920"
+      ></div>
+      <div
+        id="follow"
+        class="clip"
+        data-composition-id="follow"
+        data-composition-src="compositions/follow.html"
+        data-start="126"
+        data-duration="6"
+        data-track-index="2"
+        data-track-kind="graphics"
+        data-width="1080"
+        data-height="1920"
+      ></div>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>

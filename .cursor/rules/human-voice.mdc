@@ -1,0 +1,76 @@
+---
+description: Viewer-facing Vietnamese is a teacher talking to a non-technical viewer. Run the humanizer skill before locking lines on screen.
+alwaysApply: true
+---
+
+# Giọng người
+
+Câu người xem đọc — `script.md`, chữ trên hình, caption, câu follow — chạy skill `humanizer` trước khi vào HTML.
+
+Giữ nguyên ý và số liệu đã có nguồn. Không thêm tên, số, ngày. Không sửa timestamp, code, đường dẫn, hay id.
+
+## Người nghe
+
+Người xem có thể không làm kỹ thuật, kể cả người chưa từng đụng database. `brief.md` ghi một ví dụ đời thường, và ví dụ đó có mặt trên sân đầu trước từ chuyên môn.
+
+Xưng hô: "bạn", "chúng ta", "hệ thống", "bảng của bạn". Giữ hai cách gọi "bạn" và "chúng ta". Không đổi sang "anh em", "mọi người", hay "các bạn". Nói việc hệ thống làm với bảng của người xem. Không trách người xem.
+
+## Lời đời thường
+
+Câu trên hình đọc một lần đã hiểu. Viết như đang giảng, không như đang dịch tài liệu, và cũng không dịch hết sang ví dụ.
+
+- Từ bài đang dạy giữ nguyên tiếng Anh, viết hoa như một tên: `Index`. Ví dụ đời thường đứng cạnh nó ở sân đầu. Các câu sau vẫn gọi nó là Index. Không đổi thành "mục lục".
+- Từ tiếng Anh phổ thông thì giữ: `note`, `Follow`, `AI`, `ms`, `KB`, `file`.
+- Từ đo đạc và tên cột trong file đo thì nói bằng việc người xem nhận ra, khi từ tiếng Anh đó không phải bài học. `median` thành lần ở giữa. `bucket` thành nhóm. `join` thành ghép. `scan` thành đọc hết. Đổi một từ trong nhóm này khi người duyệt nói giữ tiếng Anh.
+- Một câu một việc. Không nhồi thêm thuật ngữ cho đủ vẻ chuyên môn.
+- Câu nghe như dịch từng chữ thì viết lại. "Index phủ câu đếm" thành "Index đủ để đếm, khỏi mở cột note."
+- Số giữ nguyên nguồn.
+
+Mỗi câu thêm một việc câu trước chưa có. Câu ngắn và câu dài xen nhau. Đọc thành tiếng thấy là lời giảng.
+
+Câu giả định người xem đã biết một điều chưa có trên sân, và chưa có trong câu trước, thì viết lại. Người xem chỉ có hình và câu đó.
+
+## Câu được phép nói đã xảy ra
+
+Trên hình có hai loại câu. Việc đã chạy thì có `measure.md` hoặc footage. Hình minh họa thì `brief.md` ghi là minh họa. Chỗ chưa kiểm chứng ở lại trong brief, không lên hình.
+
+Không viết "tôi đã thử" khi chưa thử. Demo chưa chạy thì lời là kết quả dự kiến. Câu quảng cáo của hãng không thành câu giảng.
+
+Câu phải thêm "có thể", "nói chung", hoặc "trong nhiều trường hợp" mới đúng thì còn quá rộng. Thu hẹp đến việc đang chiếu.
+
+## Câu đưa lên hình
+
+Trước:
+
+> Trên bảng demo trên máy này, index giúp tối ưu hóa truy vấn một cách hiệu quả. Sự thật là, không phải quét mà là nhảy.
+
+Sau:
+
+> Bạn đếm dòng nhóm 7. Có Index thì hệ thống nhảy tới đúng dòng. Giống mở danh bạ đúng chữ cái, khỏi đọc hết tên.
+
+Cắt trước khi dựng:
+
+- "không phải X mà là Y" khi vế đầu không sửa một hiểu lầm người xem đang có.
+- Câu chốt lặp lại điều vừa hiện trên hình.
+- Mở đầu diễn: "sự thật là", "hãy cùng xem", "hãy cùng khám phá", "điều đáng nói là".
+- "một cách hiệu quả", "tối ưu", "toàn diện" khi không kèm số đã có nguồn.
+- "bảng demo trên máy này", "trên máy này", "file demo", "trong bài này".
+- Lời kêu gọi kiểu quảng cáo, và mọi câu mời khác câu chuẩn ở dưới.
+- Liệt kê cho đủ ba mục khi ý chỉ cần một hoặc bốn.
+- Câu chỉ người dựng clip hiểu.
+- Đổi từ bài đang dạy sang tiếng Việt: Index thành mục lục.
+- Đổi từ phổ thông sang tiếng Việt cho có vẻ thuần: note thành ghi chú, Follow thành theo dõi.
+- Cụm tối hoặc cụm dịch word-by-word: "phủ câu đếm", "nhảy nhờ mục lục".
+- "thực ra", "nói thật", "đỉnh", "siêu mạnh", "cực kỳ", và câu biến một công cụ thành cuộc cách mạng.
+- "chỉ cần", "đơn giản là", "chỉ việc", "dễ thôi" khi người chưa làm kỹ thuật chưa thấy dễ.
+- "bạn sẽ không tin", bí mật giả, khẩn cấp giả, so sánh nhất không có nguồn.
+
+## Câu follow
+
+Mọi clip kết bằng đúng câu này, không viết lại:
+
+> Hãy Follow Anh 40 học AI để cập nhật nhiều thông tin về AI hơn.
+
+Ba dòng. "Hãy Follow" mở. "Anh 40 học AI" màu vàng. Dòng dưới là phần còn lại của câu. Không thêm nút.
+
+Sơ đồ không bị viết lại thành văn. Dải chữ nói bài học của sơ đồ đó.

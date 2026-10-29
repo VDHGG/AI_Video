@@ -1,0 +1,515 @@
+<template>
+  <style>
+    @font-face {
+      font-family: "Be Vietnam Pro";
+      src: url("assets/fonts/BeVietnamPro-Bold.ttf") format("truetype");
+      font-weight: 700;
+      font-style: normal;
+    }
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background: #14110e;
+      color: #f4f1ea;
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-weight: 700;
+    }
+    #glow {
+      position: absolute;
+      left: 160px;
+      top: 520px;
+      z-index: 1;
+      width: 760px;
+      height: 420px;
+      background: radial-gradient(ellipse at center, rgba(212, 137, 74, 0.34), rgba(20, 17, 14, 0) 68%);
+    }
+    #wall {
+      position: absolute;
+      left: 48px;
+      top: 330px;
+      z-index: 1;
+      width: 984px;
+      height: 560px;
+      border-radius: 22px;
+      background: #1c1713;
+    }
+    #counter {
+      position: absolute;
+      left: 36px;
+      top: 888px;
+      z-index: 3;
+      width: 1008px;
+      height: 28px;
+      border-radius: 8px 8px 0 0;
+      background: #a86b42;
+    }
+    #front {
+      position: absolute;
+      left: 36px;
+      top: 916px;
+      z-index: 3;
+      width: 1008px;
+      height: 78px;
+      border-radius: 0 0 16px 16px;
+      background: #4a3022;
+    }
+    #band {
+      position: absolute;
+      left: 48px;
+      top: 330px;
+      z-index: 2;
+      width: 984px;
+      height: 16px;
+      border-radius: 22px 22px 0 0;
+      background: repeating-linear-gradient(90deg, #c45c4a 0 48px, #e7c56a 48px 96px, #7dcec4 96px 144px, #d4894a 144px 192px);
+    }
+    #people { position: absolute; left: 24px; top: 360px; z-index: 5; width: 390px; height: 540px; }
+    #bun { position: absolute; left: 92px; top: 0; width: 48px; height: 48px; border-radius: 50%; background: #1a1410; }
+    #head { position: absolute; left: 68px; top: 34px; width: 96px; height: 96px; border-radius: 50%; background: #f0c9a0; }
+    .eye { position: absolute; top: 36px; width: 10px; height: 10px; border-radius: 50%; background: #1a1410; }
+    #eye1 { left: 24px; }
+    #eye2 { left: 60px; }
+    #smile {
+      position: absolute;
+      left: 30px;
+      top: 56px;
+      width: 32px;
+      height: 14px;
+      border-bottom: 4px solid #1a1410;
+      border-radius: 0 0 16px 16px;
+    }
+    #shirt {
+      position: absolute;
+      left: 56px;
+      top: 138px;
+      width: 122px;
+      height: 220px;
+      border-radius: 46px 46px 18px 18px;
+      background: #c45c4a;
+    }
+    #apron {
+      position: absolute;
+      left: 74px;
+      top: 176px;
+      width: 86px;
+      height: 156px;
+      border-radius: 14px;
+      background: #f4f1ea;
+    }
+    #arm {
+      position: absolute;
+      left: 150px;
+      top: 196px;
+      width: 168px;
+      height: 28px;
+      border-radius: 14px;
+      background: #f0c9a0;
+    }
+    #hand {
+      position: absolute;
+      left: 286px;
+      top: 176px;
+      z-index: 2;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #f0c9a0;
+    }
+    #pitcher {
+      position: absolute;
+      left: 300px;
+      top: 148px;
+      z-index: 3;
+      width: 62px;
+      height: 78px;
+      border-radius: 10px 10px 18px 18px;
+      background: #d4894a;
+    }
+    #spout {
+      position: absolute;
+      left: 48px;
+      top: 16px;
+      width: 26px;
+      height: 16px;
+      border-radius: 0 8px 8px 0;
+      background: #e7b56a;
+    }
+    #stream {
+      position: absolute;
+      left: 368px;
+      top: 548px;
+      z-index: 6;
+      width: 16px;
+      height: 96px;
+      border-radius: 8px;
+      background: #e7b56a;
+      transform-origin: 50% 0%;
+    }
+    #cup { position: absolute; left: 268px; top: 548px; z-index: 4; width: 230px; height: 360px; }
+    #straw {
+      position: absolute;
+      left: 148px;
+      top: 8px;
+      width: 16px;
+      height: 118px;
+      border-radius: 8px;
+      background: #e7c56a;
+      transform: rotate(16deg);
+      transform-origin: 50% 100%;
+    }
+    #dome {
+      position: absolute;
+      left: 28px;
+      top: 78px;
+      z-index: 3;
+      width: 174px;
+      height: 64px;
+      border-radius: 90px 90px 18px 18px;
+      background: #f7efe6;
+      border: 4px solid #f4f1ea;
+      box-sizing: border-box;
+    }
+    #glass {
+      position: absolute;
+      left: 16px;
+      top: 118px;
+      z-index: 2;
+      width: 198px;
+      height: 230px;
+      border-radius: 16px 16px 48px 48px;
+      border: 5px solid rgba(244, 241, 234, 0.8);
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.04) 42%, rgba(255, 255, 255, 0.2));
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+    #shine {
+      position: absolute;
+      left: 16px;
+      top: 18px;
+      width: 10px;
+      height: 150px;
+      border-radius: 8px;
+      background: rgba(244, 241, 234, 0.45);
+    }
+    #fill { position: absolute; left: 0; right: 0; bottom: 0; height: 168px; transform-origin: 50% 100%; }
+    #tea { position: absolute; left: 0; right: 0; bottom: 0; height: 132px; background: #d4894a; }
+    #foam { position: absolute; left: -8px; bottom: 112px; width: 214px; height: 40px; border-radius: 50%; background: #f7efe6; }
+    .pearl { position: absolute; bottom: 16px; width: 26px; height: 26px; border-radius: 50%; background: #2a1a14; }
+    .pearl i { position: absolute; left: 6px; top: 5px; width: 8px; height: 8px; border-radius: 50%; background: rgba(244, 241, 234, 0.45); }
+    #p1 { left: 28px; }
+    #p2 { left: 78px; bottom: 22px; }
+    #p3 { left: 128px; }
+    #pile { position: absolute; left: 28px; top: 6px; width: 140px; height: 40px; opacity: 0; }
+    #pile i { position: absolute; width: 16px; height: 16px; border-radius: 50%; background: #f7efe6; }
+    .steam {
+      position: absolute;
+      top: 48px;
+      width: 18px;
+      height: 36px;
+      border-radius: 12px;
+      background: rgba(244, 241, 234, 0.28);
+    }
+    #st1 { left: 70px; }
+    #st2 { left: 108px; height: 48px; }
+    #st3 { left: 146px; }
+    #jar { position: absolute; left: 760px; top: 520px; z-index: 4; width: 200px; height: 370px; }
+    #jlid { position: absolute; left: 18px; top: 0; width: 164px; height: 28px; border-radius: 8px; background: #2a2420; }
+    #jglass {
+      position: absolute;
+      left: 28px;
+      top: 24px;
+      width: 144px;
+      height: 300px;
+      border-radius: 16px 16px 28px 28px;
+      border: 4px solid rgba(244, 241, 234, 0.55);
+      background: rgba(244, 241, 234, 0.08);
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+    .grain { position: absolute; width: 14px; height: 14px; border-radius: 50%; background: #f4f1ea; }
+    #sticker {
+      position: absolute;
+      left: 16px;
+      top: 96px;
+      z-index: 2;
+      width: 108px;
+      height: 92px;
+      box-sizing: border-box;
+      padding-top: 16px;
+      border-radius: 12px;
+      background: #7dcec4;
+      color: #10221f;
+      font-size: 30px;
+      line-height: 1.15;
+      text-align: center;
+      opacity: 0;
+    }
+    #sheet {
+      position: absolute;
+      left: 530px;
+      top: 600px;
+      z-index: 5;
+      width: 210px;
+      height: 230px;
+      border-radius: 12px;
+      background: #f4f1ea;
+      color: #1c2430;
+      box-sizing: border-box;
+      padding: 22px 18px 0;
+      opacity: 0;
+    }
+    #sheet p { margin: 0 0 8px; font-size: 32px; line-height: 1.2; }
+    #sheet .amt { color: #8a4034; font-size: 36px; }
+    .sl { height: 10px; margin: 0 0 12px; border-radius: 6px; background: #e7e0d4; }
+    .bubble {
+      position: absolute;
+      left: 150px;
+      top: 188px;
+      z-index: 7;
+      max-width: 760px;
+      margin: 0;
+      padding: 16px 22px;
+      border-radius: 18px;
+      background: #1c2430;
+      color: #f4f1ea;
+      font-size: 34px;
+      line-height: 1.25;
+      opacity: 0;
+    }
+    #speech2 { font-size: 32px; }
+    #book {
+      position: absolute;
+      left: 508px;
+      top: 575px;
+      z-index: 6;
+      width: 250px;
+      height: 280px;
+      border-radius: 8px 14px 14px 8px;
+      background: #8a4034;
+      opacity: 0;
+    }
+    #spine { position: absolute; left: 0; top: 0; width: 22px; height: 100%; background: #6a3028; border-radius: 8px 0 0 8px; }
+    #book-page {
+      position: absolute;
+      left: 28px;
+      top: 18px;
+      width: 188px;
+      height: 244px;
+      border-radius: 6px;
+      background: #f4f1ea;
+    }
+    #edges {
+      position: absolute;
+      right: 8px;
+      top: 18px;
+      width: 16px;
+      height: 244px;
+      border-radius: 0 6px 6px 0;
+      background: repeating-linear-gradient(#f4f1ea 0 8px, #c4b8a4 8px 11px);
+    }
+    .bl { height: 12px; margin: 22px 16px 0; border-radius: 6px; background: #e7e0d4; }
+    #book-miss { height: 16px; margin: 28px 16px 0; border-radius: 6px; background: #e07a5f; }
+    #spoon { position: absolute; left: 500px; top: 842px; z-index: 6; width: 190px; height: 40px; opacity: 0; transform-origin: 0% 50%; }
+    #bowl {
+      position: absolute;
+      left: 0;
+      top: 2px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 6px solid #f4f1ea;
+      box-sizing: border-box;
+    }
+    #handle { position: absolute; left: 28px; top: 14px; width: 150px; height: 12px; border-radius: 8px; background: #f4f1ea; }
+    #hop {
+      position: absolute;
+      left: 492px;
+      top: 680px;
+      z-index: 8;
+      width: 28px;
+      height: 28px;
+      background: #7dcec4;
+      clip-path: polygon(0 0, 100% 50%, 0 100%);
+      opacity: 0;
+    }
+    .cap {
+      position: absolute;
+      left: 64px;
+      top: 1100px;
+      z-index: 9;
+      width: 952px;
+      margin: 0;
+      font-size: 45px;
+      line-height: 1.22;
+      opacity: 0;
+    }
+    #c1 { opacity: 1; }
+    .w { color: #9a9388; }
+    .w.hot { color: #7dcec4; }
+  </style>
+  <div id="root" data-composition-id="shop" data-width="1080" data-height="1920" data-layout-allow-overlap>
+    <div id="glow"></div>
+    <div id="wall"></div>
+    <div id="band"></div>
+    <div id="counter"></div>
+    <div id="front"></div>
+    <div id="people">
+      <div id="bun"></div>
+      <div id="head"><i class="eye" id="eye1"></i><i class="eye" id="eye2"></i><i id="smile"></i></div>
+      <div id="shirt"></div>
+      <div id="apron"></div>
+      <div id="arm"></div>
+      <div id="hand"></div>
+      <div id="pitcher"><div id="spout"></div></div>
+    </div>
+    <div id="stream"></div>
+    <div id="cup">
+      <div class="steam" id="st1"></div>
+      <div class="steam" id="st2"></div>
+      <div class="steam" id="st3"></div>
+      <div id="straw"></div>
+      <div id="dome"></div>
+      <div id="glass">
+        <div id="shine"></div>
+        <div id="fill">
+          <div id="tea"></div>
+          <div id="foam"></div>
+          <div class="pearl" id="p1"><i></i></div>
+          <div class="pearl" id="p2"><i></i></div>
+          <div class="pearl" id="p3"><i></i></div>
+          <div id="pile"><i style="left:8px;top:16px"></i><i style="left:28px;top:4px"></i><i style="left:50px;top:18px"></i><i style="left:72px;top:6px"></i><i style="left:94px;top:16px"></i><i style="left:112px;top:4px"></i></div>
+        </div>
+      </div>
+    </div>
+    <div id="jar">
+      <div id="jlid"></div>
+      <div id="jglass">
+        <i class="grain" style="left:18px;top:150px"></i>
+        <i class="grain" style="left:48px;top:168px"></i>
+        <i class="grain" style="left:78px;top:146px"></i>
+        <i class="grain" style="left:30px;top:188px"></i>
+        <i class="grain" style="left:64px;top:196px"></i>
+        <i class="grain" style="left:96px;top:176px"></i>
+        <i class="grain" style="left:42px;top:214px"></i>
+        <i class="grain" style="left:84px;top:210px"></i>
+        <p id="sticker">hai<br>thìa</p>
+      </div>
+    </div>
+    <div id="sheet">
+      <p>công thức</p>
+      <p class="amt">2 thìa</p>
+      <div class="sl"></div>
+      <div class="sl" style="width:70%"></div>
+    </div>
+    <p id="speech" class="bubble">làm trà sữa</p>
+    <p id="speech2" class="bubble">làm trà sữa, nói kỹ hơn, nhớ đừng ngọt</p>
+    <div id="book">
+      <div id="spine"></div>
+      <div id="edges"></div>
+      <div id="book-page">
+        <div class="bl"></div>
+        <div class="bl" style="width:60%"></div>
+        <div id="book-miss"></div>
+      </div>
+    </div>
+    <div id="spoon"><div id="bowl"></div><div id="handle"></div></div>
+    <div id="hop"></div>
+    <p id="c1" class="cap"><span class="w hot">Bạn</span> <span class="w">nhờ</span> <span class="w" data-role="go">người</span> <span class="w" data-role="go">mới</span><br><span class="w">pha</span> <span class="w">trà</span> <span class="w">sữa.</span></p>
+    <p id="c2" class="cap"><span class="w hot">Bạn</span> <span class="w">nói:</span> <span class="w" data-role="go">làm</span> <span class="w">trà</span> <span class="w">sữa.</span></p>
+    <p id="c3" class="cap"><span class="w hot">Cốc</span> <span class="w">bưng</span> <span class="w">ra.</span><br><span class="w" data-role="cost">Ngọt</span> <span class="w" data-role="cost">quá.</span></p>
+    <p id="c4" class="cap"><span class="w hot">Hôm</span> <span class="w">sau</span> <span class="w">bạn</span> <span class="w">nói</span> <span class="w" data-role="cost">dài</span> <span class="w">hơn.</span></p>
+    <p id="c5" class="cap"><span class="w hot">Cốc</span> <span class="w" data-role="cost">vẫn</span> <span class="w">ngọt</span> <span class="w">quá.</span></p>
+    <p id="c6" class="cap"><span class="w hot">Bạn</span> <span class="w">không</span> <span class="w" data-role="cost">đứng</span> <span class="w">mãi</span><br><span class="w">để</span> <span class="w">nhắc</span> <span class="w">từng</span> <span class="w">cốc.</span></p>
+    <p id="c7" class="cap"><span class="w hot">Bạn</span> <span class="w">để</span> <span class="w">lên</span> <span class="w">quầy</span><br><span class="w">tờ</span> <span class="w" data-role="go">công</span> <span class="w">thức,</span> <span class="w">cái</span> <span class="w">cốc,</span> <span class="w">và</span> <span class="w">hũ</span> <span class="w">đường.</span></p>
+    <p id="c8" class="cap"><span class="w hot">Họ</span> <span class="w">làm</span> <span class="w">theo</span> <span class="w">tờ</span><br><span class="w">đang</span> <span class="w">nằm</span> <span class="w" data-role="go">trước</span> <span class="w">mặt.</span></p>
+    <p id="c9" class="cap"><span class="w hot">Bạn</span> <span class="w">để</span> <span class="w">cả</span> <span class="w">cuốn</span> <span class="w" data-role="cost">sổ</span> <span class="w">dày.</span><br><span class="w">Họ</span> <span class="w">lật</span> <span class="w">nhầm</span> <span class="w">trang.</span></p>
+    <p id="c10" class="cap"><span class="w hot">Bạn</span> <span class="w">dán</span> <span class="w">lên</span> <span class="w">hũ:</span> <span class="w" data-role="num">hai</span> <span class="w">thìa.</span></p>
+    <p id="c11" class="cap"><span class="w hot" data-role="go">Nếm</span> <span class="w">xong</span> <span class="w">mới</span> <span class="w">được</span><br><span class="w">bưng</span> <span class="w">cốc</span> <span class="w">ra.</span></p>
+    <p id="c12" class="cap"><span class="w hot">Bạn</span> <span class="w">về.</span><br><span class="w" data-role="go">Miếng</span> <span class="w">dán</span> <span class="w">vẫn</span> <span class="w">nằm</span> <span class="w">trên</span> <span class="w">hũ.</span></p>
+  </div>
+  <script>
+    (() => {
+      const tl = gsap.timeline({ paused: true });
+      const DIM = "#9a9388";
+      const CREAM = "#f4f1ea";
+      const GO = "#7dcec4";
+      const COST = "#e07a5f";
+      const NUM = "#e7c56a";
+      const tone = (el) => {
+        const role = el.getAttribute("data-role");
+        if (role === "num" || role === "gold") return NUM;
+        if (role === "cost") return COST;
+        if (role === "go") return GO;
+        return null;
+      };
+      const karaoke = (sel, start, dur) => {
+        const words = Array.from(document.querySelectorAll(sel + " .w"));
+        const n = words.length;
+        if (!n) return;
+        const each = Math.min(0.42, Math.max(0.18, (dur - 0.35) / n));
+        words.forEach((el, i) => {
+          const stay = tone(el);
+          const hot = stay || GO;
+          const rest = stay || CREAM;
+          const t = start + 0.06 + i * each;
+          if (i === 0) {
+            tl.fromTo(el, { color: hot }, { color: rest, duration: 0.14, immediateRender: false }, t + each * 0.7);
+          } else {
+            tl.fromTo(el, { color: DIM }, { color: hot, duration: 0.08, immediateRender: false }, t);
+            tl.fromTo(el, { color: hot }, { color: rest, duration: 0.12, immediateRender: false }, t + each * 0.55);
+          }
+        });
+      };
+      const cap = (id, start, dur, last) => {
+        if (start > 0) {
+          tl.set(id, { opacity: 0 }, 0);
+          tl.to(id, { opacity: 1, duration: 0.16 }, start);
+        }
+        karaoke(id, start, Math.max(0.8, dur - 0.28));
+        if (!last) tl.to(id, { opacity: 0, duration: 0.14 }, start + dur - 0.14);
+      };
+      tl.set("#arm", { rotation: -24, transformOrigin: "0% 50%" }, 0);
+      Array.from(document.querySelectorAll(".steam")).forEach((el, i) => {
+        const half = 1.25 + i * 0.18;
+        const slots = Math.floor(64 / half);
+        tl.fromTo(el, { y: 8, opacity: 0.12 }, { y: -26, opacity: 0.4, duration: half, ease: "sine.inOut", yoyo: true, repeat: slots - 1 }, i * 0.15);
+      });
+      tl.to("#stream", { scaleY: 0, duration: 0.7, ease: "power2.in" }, 2.1);
+      tl.to("#speech", { opacity: 1, duration: 0.18 }, 6.05);
+      tl.to("#speech", { opacity: 0, duration: 0.14 }, 10.7);
+      tl.to("#tea", { backgroundColor: "#e07a5f", duration: 0.28 }, 11.15);
+      tl.to("#fill", { scaleY: 1.16, duration: 0.28, ease: "power2.out" }, 11.15);
+      tl.to("#pile", { opacity: 1, duration: 0.2 }, 11.2);
+      tl.to("#speech2", { opacity: 1, duration: 0.18 }, 16.1);
+      tl.to("#speech2", { opacity: 0, duration: 0.16 }, 19.6);
+      tl.to("#pile", { y: -6, duration: 0.2, yoyo: true, repeat: 1 }, 21.3);
+      tl.to("#people", { x: -12, duration: 0.3, ease: "power2.out" }, 27.3);
+      tl.fromTo("#sheet", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.22, ease: "power2.out" }, 33.2);
+      tl.to("#hop", { opacity: 1, duration: 0.12 }, 38.9);
+      tl.to("#hop", { x: 16, y: -8, duration: 0.18, ease: "power3.out" }, 39.2);
+      tl.fromTo("#book", { opacity: 0, y: -16 }, { opacity: 1, y: 0, duration: 0.22 }, 44.2);
+      tl.to("#book-page", { x: 16, duration: 0.18, ease: "power2.out" }, 46.5);
+      tl.to("#book", { x: 460, opacity: 0, duration: 0.36, ease: "power2.in" }, 48.3);
+      tl.fromTo("#sticker", { opacity: 0, scale: 0.55 }, { opacity: 1, scale: 1, duration: 0.18, ease: "power2.out" }, 50.15);
+      tl.to("#hop", { x: 250, y: -90, duration: 0.18, ease: "power3.out" }, 50.45);
+      tl.fromTo("#spoon", { opacity: 0, x: 40, rotation: -28 }, { opacity: 1, x: 0, rotation: 18, duration: 0.32, ease: "power2.out" }, 55.2);
+      tl.to("#people", { x: -340, opacity: 0, duration: 0.5, ease: "power2.in" }, 60.25);
+      tl.to("#spoon", { opacity: 0.4, duration: 0.3 }, 62.2);
+      cap("#c1", 0, 6, false);
+      cap("#c2", 6, 5, false);
+      cap("#c3", 11, 5, false);
+      cap("#c4", 16, 5, false);
+      cap("#c5", 21, 6, false);
+      cap("#c6", 27, 6, false);
+      cap("#c7", 33, 6, false);
+      cap("#c8", 39, 5, false);
+      cap("#c9", 44, 6, false);
+      cap("#c10", 50, 5, false);
+      cap("#c11", 55, 5, false);
+      cap("#c12", 60, 6, true);
+      window.__timelines = window.__timelines || {};
+      window.__timelines["shop"] = tl;
+    })();
+  </script>
+</template>
